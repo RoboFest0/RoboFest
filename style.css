@@ -1542,7 +1542,7 @@ body::before {
     }
 
     .section-pad {
-        padding: 55px 25px !important;
+        padding: 55px 25px 70px !important;
     }
 
     .section-pud {
