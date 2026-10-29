@@ -1,0 +1,471 @@
+/* =========================================================
+   ROBOFEST — Main event, event cards & section dividers
+   ========================================================= */
+
+/* ---------- Section dividers ---------- */
+main>section {
+  position: relative;
+}
+
+main>section:not(:last-child) {
+  border-bottom: 1px solid rgba(168, 85, 247, .2);
+}
+
+main>section:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  right: 24px;
+  height: 1px;
+  background: rgba(168, 85, 247, .25);
+}
+
+/* ---------- Main event (ROBOTHON) ---------- */
+.main-event {
+  width: 100%;
+  background-color: #08050f;
+  background-image:
+    linear-gradient(90deg, rgba(7, 6, 11, .55) 0%, rgba(7, 6, 11, .35) 50%, rgba(7, 6, 11, .20) 100%),
+    url("Main_Event.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.main-event-card {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: hidden;
+  border: 1px solid #00d9ff;
+  border-radius: 20px;
+  background: rgba(7, 11, 22, .72);
+  box-shadow:
+    1px 0 0 #5cecff,
+    4px 0 0 #087b99,
+    8px 0 0 #062333,
+    0 2px 0 #087b99,
+    0 7px 0 #062333,
+    14px 16px 28px rgba(0, 0, 0, .48),
+    0 0 28px rgba(0, 201, 238, .18),
+    inset 0 1px 0 rgba(255, 255, 255, .12),
+    inset -3px 0 0 rgba(92, 236, 255, .28);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  transform: translateY(0);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.main-event-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  background:
+    linear-gradient(135deg, rgba(0, 217, 255, .10), transparent 28%, transparent 72%, rgba(0, 217, 255, .06)),
+    radial-gradient(ellipse at 50% 0%, rgba(0, 217, 255, .09), transparent 60%);
+}
+
+.main-event-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 14px;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(270deg, rgba(92, 236, 255, .22), rgba(0, 217, 255, .08) 45%, transparent);
+  border-radius: 0 20px 20px 0;
+}
+
+.main-event-card:hover {
+  box-shadow:
+    1px 0 0 #5cecff,
+    5px 0 0 #087b99,
+    10px 0 0 #062333,
+    0 3px 0 #087b99,
+    0 10px 0 #062333,
+    18px 22px 36px rgba(0, 0, 0, .52),
+    0 0 34px rgba(0, 201, 238, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .16),
+    inset -3px 0 0 rgba(92, 236, 255, .35);
+}
+
+.main-event-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding: clamp(22px, 4vw, 42px);
+}
+
+.main-event-content h2 {
+  margin: 10px 0;
+  color: #00d9ff;
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(32px, 5vw, 54px);
+}
+
+.main-event-subtitle,
+.main-event-description {
+  color: #c4d1e1;
+  line-height: 1.8;
+  font-size: 13px;
+}
+
+.main-event-date {
+  margin: 22px 0 15px;
+  padding: 14px;
+  border: 1px solid #07516a;
+  border-radius: 10px;
+  background: #062638;
+  color: #64eaff;
+  font-weight: 700;
+  font-size: 13px;
+  text-align: center;
+}
+
+/* ---------- Info boxes (main event + event cards) ---------- */
+.event-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.event-info-box {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+  padding: 13px 12px;
+  border: 1px solid #12364b;
+  border-radius: 10px;
+  background: #0a1425;
+}
+
+.event-info-box>span {
+  flex: 0 0 auto;
+  color: #00d9ff;
+  font-size: 19px;
+}
+
+.event-info-box small,
+.event-info-box strong {
+  display: block;
+}
+
+.event-info-box small {
+  margin-bottom: 4px;
+  color: #8999ae;
+  font-size: 10px;
+}
+
+.event-info-box strong {
+  color: #f1f7ff;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+
+.event-card-content .event-info-grid.compact {
+  gap: 7px;
+  margin: 17px 0;
+}
+
+.event-info-grid.compact .event-info-box {
+  gap: 7px;
+  padding: 10px 8px;
+}
+
+.event-info-grid.compact .event-info-box>span {
+  font-size: 16px;
+}
+
+.event-info-grid.compact .event-info-box small {
+  font-size: 9px;
+}
+
+.event-info-grid.compact .event-info-box strong {
+  font-size: 10px;
+}
+
+/* ---------- Main event button (3D cyan) ---------- */
+.main-event-button {
+  position: relative;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  border: 1px solid #5cecff;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #19dfff 0%, #00a9d6 55%, #007da9 100%);
+  color: #03111b;
+  font-weight: 800;
+  text-decoration: none;
+  text-align: center;
+  box-shadow:
+    0 3px 0 #006181,
+    0 6px 0 #03405a,
+    0 10px 18px rgba(0, 0, 0, .38),
+    inset 0 1px 0 rgba(255, 255, 255, .55);
+  transform: translateY(0);
+  transition: transform .12s ease, box-shadow .12s ease, filter .12s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Mouse over the button: lifts up */
+@media (hover: hover) and (pointer: fine) {
+  .main-event-button:hover {
+    filter: brightness(1.08);
+    transform: translateY(-2px);
+    box-shadow:
+      0 4px 0 #006181,
+      0 7px 0 #03405a,
+      0 13px 22px rgba(0, 0, 0, .42),
+      inset 0 1px 0 rgba(255, 255, 255, .6);
+  }
+}
+
+/* Finger or mouse held on the button: presses down.
+   (.is-pressed is added by script.js on pointerdown and removed on release/leave) */
+.main-event-button:active,
+.main-event-button.is-pressed {
+  transform: translateY(5px);
+  filter: brightness(.96);
+  box-shadow:
+    0 1px 0 #006181,
+    0 2px 0 #03405a,
+    0 3px 8px rgba(0, 0, 0, .35),
+    inset 0 3px 7px rgba(0, 35, 55, .28);
+}
+
+.main-event-button:focus-visible {
+  outline: 2px solid #e5fbff;
+  outline-offset: 4px;
+}
+
+/* No sticky hover lift on touch devices (card only) */
+@media (hover: none),
+(pointer: coarse) {
+  .main-event-card:hover {
+    transform: none;
+    border-color: #00d9ff;
+    box-shadow:
+      1px 0 0 #5cecff,
+      4px 0 0 #087b99,
+      8px 0 0 #062333,
+      0 2px 0 #087b99,
+      0 7px 0 #062333,
+      14px 16px 28px rgba(0, 0, 0, .48),
+      0 0 28px rgba(0, 201, 238, .18),
+      inset 0 1px 0 rgba(255, 255, 255, .12),
+      inset -3px 0 0 rgba(92, 236, 255, .28);
+  }
+}
+
+/* ---------- Events section ---------- */
+.events {
+  background-color: #08050f;
+  background-image:
+    linear-gradient(rgb(66 65 45 / 45%), rgb(0 0 0 / 70%)),
+    url("Robot.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* "All challenges" button (3D violet) */
+.events .section-heading>.button-secondary {
+  position: relative;
+  height: 40px;
+  margin: 10px 0;
+  padding: 14px 22px;
+  gap: 13px;
+  isolation: isolate;
+  overflow: hidden;
+  color: #fff7ff;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+  border: 1px solid #f0abfc;
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .18), transparent 35%),
+    linear-gradient(135deg, #c026d3 0%, #8438c7 42%, #32104f 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .45),
+    inset 0 -4px 8px rgba(25, 5, 42, .42),
+    0 3px 0 #210d35,
+    0 6px 0 #160820,
+    0 12px 24px rgba(147, 51, 234, .28),
+    0 0 18px rgba(192, 38, 211, .12);
+  transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.events .section-heading>.button-secondary::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: -1;
+  border-radius: 10px;
+  background: linear-gradient(115deg, rgba(255, 255, 255, .12), transparent 38%, rgba(240, 171, 252, .08));
+  pointer-events: none;
+}
+
+.events .section-heading>.button-secondary span {
+  display: inline-block;
+  transition: transform .2s ease;
+}
+
+.events .section-heading>.button-secondary:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.12);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .55),
+    inset 0 -4px 8px rgba(25, 5, 42, .35),
+    0 5px 0 #210d35,
+    0 8px 0 #160820,
+    0 17px 30px rgba(147, 51, 234, .38),
+    0 0 24px rgba(192, 38, 211, .2);
+}
+
+.events .section-heading>.button-secondary:hover span {
+  transform: translate(3px, -3px);
+}
+
+/* No sticky hover on touch devices */
+@media (hover: none),
+(pointer: coarse) {
+  .events .section-heading>.button-secondary:hover {
+    transform: translateY(0);
+    filter: none;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, .45),
+      inset 0 -4px 8px rgba(25, 5, 42, .42),
+      0 3px 0 #210d35,
+      0 6px 0 #160820,
+      0 12px 24px rgba(147, 51, 234, .28),
+      0 0 18px rgba(192, 38, 211, .12);
+  }
+
+  .events .section-heading>.button-secondary:hover span {
+    transform: none;
+  }
+}
+
+.events .section-heading>.button-secondary:active,
+.events .section-heading>.button-secondary.is-pressed {
+  transform: translateY(4px);
+  filter: brightness(.98);
+  box-shadow:
+    inset 0 3px 8px rgba(25, 5, 42, .5),
+    0 1px 0 #210d35,
+    0 3px 8px rgba(147, 51, 234, .22);
+}
+
+.events .section-heading>.button-secondary:focus-visible {
+  outline: 2px solid #f0abfc;
+  outline-offset: 4px;
+}
+
+/* ---------- Event cards (3D) ---------- */
+.event-grid .event-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(201, 142, 255, .42);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #191025 0%, #0e0a16 58%, #08050f 100%);
+  box-shadow:
+    1px 0 0 #482263,
+    5px 4px 0 #32104f,
+    8px 8px 0 #1c0c2a,
+    12px 15px 24px rgba(0, 0, 0, .42),
+    inset 0 1px 0 rgba(255, 255, 255, .08);
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.event-grid .event-card:hover {
+  transform: translate(-2px, -5px);
+  border-color: #d8a0ff;
+  box-shadow:
+    1px 0 0 #6f3894,
+    6px 5px 0 #32104f,
+    9px 9px 0 #1c0c2a,
+    15px 20px 30px rgba(0, 0, 0, .48),
+    0 0 22px rgba(147, 51, 234, .16),
+    inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+
+.event-grid .event-image {
+  border-radius: 19px 19px 0 0;
+}
+
+.event-grid .event-card-content {
+  background: linear-gradient(155deg, rgba(49, 25, 70, .35), rgba(8, 5, 15, .96) 72%);
+}
+
+/* Event artwork */
+.events .event-image.race-image {
+  background:
+    linear-gradient(rgba(5, 5, 15, .30), rgba(5, 5, 15, .55)),
+    url("RoboRace.png") center / cover no-repeat;
+}
+
+.events .event-image.build-image {
+  background:
+    linear-gradient(rgba(5, 5, 15, .30), rgba(5, 5, 15, .55)),
+    url("RoboSoccer.png") center / cover no-repeat;
+}
+
+.events .event-image.drone-image {
+  background:
+    linear-gradient(rgba(5, 5, 15, .30), rgba(5, 5, 15, .55)),
+    url("RoboWar.png") center / cover no-repeat;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 720px) {
+  main>section:not(:last-child)::after {
+    left: 16px;
+    right: 16px;
+  }
+
+  .main-event {
+    background-position: 40% center;
+  }
+
+  .main-event-card {
+    background: rgba(7, 11, 22, .78);
+  }
+
+  .main-event-content {
+    padding: 22px 18px;
+  }
+
+  .event-info-grid {
+    gap: 8px;
+  }
+
+  .event-info-box {
+    padding: 11px 9px;
+  }
+
+  .event-info-box strong {
+    font-size: 10px;
+  }
+
+  .events {
+    background-position: 78% center;
+  }
+}
